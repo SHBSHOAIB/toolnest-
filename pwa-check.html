@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PWA check - ToolNest</title>
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#062a25">
+<style>body{font-family:system-ui,sans-serif;background:#0f172a;color:#e2e8f0;padding:1rem;line-height:1.5}li{margin:.5rem 0;word-break:break-word}button{padding:.7rem 1rem;font-size:1rem}</style>
+</head>
+<body>
+<h1>ToolNest PWA check</h1>
+<p>Open this page on the same address you use for ToolNest. Delete this file before publishing the website.</p>
+<ul id="out"></ul>
+<div id="inst"></div>
+<script src="js/main.js" defer></script>
+<script>
+var out=document.getElementById('out'),ev=null;
+function add(ok,t){var li=document.createElement('li');li.textContent=(ok===true?'PASS: ':ok===false?'FAIL: ':'INFO: ')+t;out.appendChild(li);}
+add(null,'Address: '+location.href);
+add(window.isSecureContext,'Secure context (HTTPS or localhost). Required for installing.');
+add('serviceWorker' in navigator,'Service worker supported by this browser');
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();ev=e;add(true,'Chrome reports ToolNest as installable.');
+  var b=document.createElement('button');b.textContent='Install ToolNest';b.onclick=function(){ev.prompt();};document.getElementById('inst').appendChild(b);
+});
+var mu=document.querySelector('link[rel=manifest]').href;
+fetch(mu).then(function(r){add(r.ok,'Manifest HTTP '+r.status+', content type: '+r.headers.get('content-type'));return r.json();}).then(function(m){
+  add(!!(m.name&&m.start_url&&m.display),'Manifest has name, start_url and display ('+m.display+')');
+  m.icons.forEach(function(i){
+    var img=new Image(),w=i.sizes.split('x').map(Number);
+    img.onload=function(){add(img.naturalWidth===w[0]&&img.naturalHeight===w[1],'Icon '+i.src+' loads at '+img.naturalWidth+'x'+img.naturalHeight+' (declared '+i.sizes+')');};
+    img.onerror=function(){add(false,'Icon '+i.src+' failed to load');};
+    img.src=new URL(i.src,mu).href;
+  });
+}).catch(function(e){add(false,'Manifest problem: '+e.message);});
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.getRegistrations().then(function(rs){
+    if(!rs.length)add(false,'No service worker registered yet. Wait a few seconds and reload this page.');
+    rs.forEach(function(r){var w=r.active||r.waiting||r.installing;add(!!(r.active&&r.active.state==='activated'),'Service worker scope '+r.scope+', state '+(w?w.state:'none'));});
+    add(!!navigator.serviceWorker.controller,'This page is controlled by the service worker');
+  });
+}
+setTimeout(function(){if(!ev)add(null,'Chrome has not offered installation yet. If every check above passed, wait a little, visit a second page, or check whether the app is already installed.');},5000);
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Tools - Resize, Compress and Convert Images | ToolNest</title>
+<meta name="description" content="Resize, compress or convert JPG, PNG and WebP images in your browser. Your files are not uploaded to a server. Free on ToolNest.">
+<link rel="canonical" href="https://toolnest.com/image-tools.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ToolNest">
+<meta property="og:title" content="Image Tools - Resize, Compress and Convert Images | ToolNest">
+<meta property="og:description" content="Resize, compress or convert JPG, PNG and WebP images in your browser. Your files are not uploaded to a server. Free on ToolNest.">
+<meta property="og:url" content="https://toolnest.com/image-tools.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image Tools - Resize, Compress and Convert Images | ToolNest">
+<meta name="twitter:description" content="Resize, compress or convert JPG, PNG and WebP images in your browser. Your files are not uploaded to a server. Free on ToolNest.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧰%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#062a25">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+<!-- Analytics snippet goes here once an analytics account exists. -->
+<!-- AdSense site script goes here after approval. -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Image Tools", "url": "https://toolnest.com/image-tools.html", "description": "Resize, compress or convert JPG, PNG and WebP images in your browser. Your files are not uploaded to a server.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolnest.com/"}, {"@type": "ListItem", "position": 2, "name": "Utilities", "item": "https://toolnest.com/index.html?cat=Utilities"}, {"@type": "ListItem", "position": 3, "name": "Image Tools", "item": "https://toolnest.com/image-tools.html"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are my images uploaded?", "acceptedAnswer": {"@type": "Answer", "text": "No. Processing happens in your browser using Canvas."}}, {"@type": "Question", "name": "Why did compression make the file bigger?", "acceptedAnswer": {"@type": "Answer", "text": "Images that are already well compressed can grow when re-encoded. Try a lower quality or another format."}}]}]}</script>
+</head>
+<body data-tool="image-tools.html">
+<div class="page-wrapper">
+<header>
+<div class="bar">
+<a class="logo" href="index.html" aria-label="ToolNest home">🧰 ToolNest</a>
+<nav id="nav" aria-label="Main navigation"><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#tools" class="active" aria-current="page">All Tools</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul></nav>
+<button id="fsBtn" class="btn alt" type="button">⛶ Full Screen</button>
+<button id="menuBtn" class="btn alt" type="button" aria-label="Toggle menu" aria-expanded="false">☰</button>
+</div>
+</header>
+<main>
+<div class="stack"><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="index.html?cat=Utilities#tools">Utilities</a> &rsaquo; <span aria-current="page">Image Tools</span></nav><section class="tool card"><h1>Image Tools</h1><p class="mu">Resize, compress and convert images in your browser.</p><label for="file">Choose an image (JPG, PNG or WebP)</label><input type="file" id="file" accept="image/jpeg,image/png,image/webp"><div class="res" id="info">No image selected. Images stay in your browser and are not uploaded.</div><div class="tabs" role="tablist" aria-label="Image tools"><button class="btn alt active" role="tab" data-m="resize" aria-selected="true" type="button">Resize</button><button class="btn alt" role="tab" data-m="compress" aria-selected="false" type="button">Compress</button><button class="btn alt" role="tab" data-m="convert" aria-selected="false" type="button">Convert</button></div><div id="p-resize"><div class="row"><div><label for="w">Width (px)</label><input type="number" id="w" min="1" inputmode="numeric"></div><div><label for="h">Height (px)</label><input type="number" id="h" min="1" inputmode="numeric"></div></div><label><input type="checkbox" id="ar" checked>Maintain aspect ratio</label></div><div id="p-compress" hidden><label for="q">Quality: <span id="qv">70%</span></label><input type="range" id="q" min="10" max="100" value="70"><p class="note">PNG images are compressed as WebP.</p></div><div id="p-convert" hidden><label for="fmt">Convert to</label><select id="fmt"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></div><button class="btn" id="go" type="button">Apply</button><img id="prev" alt="Preview of the processed image" hidden><div class="res" id="outinfo" aria-live="polite"></div><a class="btn" id="dl" href="#" hidden>Download</a><div class="actions"><button class="btn alt" type="button" onclick="location.reload()">Reset</button></div></section><article class="card prose"><h2>What is the Image Tools?</h2><p>Resize, compress or convert JPG, PNG and WebP images in your browser. Your files are not uploaded to a server.</p><h2>How to use it</h2><ol><li>Choose an image.</li><li>Pick Resize, Compress or Convert and set the options.</li><li>Press Apply, check the preview, then Download.</li></ol><h2>Formula</h2><p>Resizing redraws the image on a canvas at the new width and height. Compression re-encodes the image at the chosen quality: lower quality gives a smaller file with less detail.</p><h2>Example</h2><p>A 4000 × 3000 photo resized to 1000 × 750 keeps its shape (aspect ratio) and is usually a much smaller file.</p><h2>Important notes</h2><p>Very large images use a lot of memory on phones, so sizes above 8000 px are rejected. JPG has no transparency, so transparent areas become white. Your original file is never changed.</p></article><div class="ad-container ad-between" aria-label="Advertisement">
+<!-- AdSense code will be placed here -->
+</div><section class="card prose"><h2>Frequently asked questions</h2><h3>Are my images uploaded?</h3><p>No. Processing happens in your browser using Canvas.</p><h3>Why did compression make the file bigger?</h3><p>Images that are already well compressed can grow when re-encoded. Try a lower quality or another format.</p></section><div class="ad-container ad-bottom" aria-label="Advertisement">
+<!-- AdSense code will be placed here -->
+</div><section class="card"><h2>Related tools</h2><ul class="chips"><li><a class="chip" href="word-counter.html">Word Counter</a></li><li><a class="chip" href="calculator.html">Calculator</a></li><li><a class="chip" href="unit-converter.html">Unit Converter</a></li></ul></section></div>
+</main>
+<footer>
+<p><strong>ToolNest</strong> - Simple Tools. Fast Results.</p>
+<p><a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms &amp; Conditions</a> | <a href="disclaimer.html">Disclaimer</a></p>
+<p>Email: <a href="mailto:shoaib674191@gmail.com">shoaib674191@gmail.com</a></p>
+<p>© <span id="year">2026</span> ToolNest. All rights reserved.</p>
+</footer>
+</div>
+<p id="toast" class="toast" role="status" hidden></p>
+<script src="js/main.js" defer></script>
+<script src="js/image-tools.js" defer></script>
+</body>
+</html>
